@@ -15,5 +15,5 @@ function addBookToLibrary() {
   myLibrary.push(new Book(author, title, pages, read));
 };
 
-const myButton = document.querySelector("button");
+const myButton = document.querySelector("#add");
 myButton.addEventListener("click", addBookToLibrary);
