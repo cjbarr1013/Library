@@ -26,14 +26,14 @@ function addBookToLibrary() {
   const pages = prompt("Pages? (must be a positive integer)");
   const read = prompt("Have you read it? (y/n)");
   const comments = prompt("Any comments?");
-  
+
   const newBook = new Book(author, title, pages, read, comments)
   myLibrary.push(newBook);
   return newBook;
 };
 
 function displayBook(book) {
-  // Create elements and add classes to buttons
+  // Create elements and add text content
   const row = document.createElement("tr");
 
   const author = document.createElement("td");
@@ -51,11 +51,24 @@ function displayBook(book) {
   const comments = document.createElement("td");
   comments.textContent = book.comments;
 
+  // Add buttons and event listeners
   const options = document.createElement("td");
+
   const favBtn = document.createElement("button");
   favBtn.classList.add("fav-btn");
+  favBtn.addEventListener("click", () => {
+    if (row.classList.contains("highlight")) {
+      row.classList.remove("highlight")
+    } else {
+      row.classList.add("highlight")
+    }
+  });
+
   const delBtn = document.createElement("button");
   delBtn.classList.add("del-btn");
+  delBtn.addEventListener("click", () => {
+    row.remove();
+  });
 
   // Add buttons to table element
   options.appendChild(favBtn);

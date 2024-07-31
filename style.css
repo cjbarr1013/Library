@@ -115,6 +115,6 @@ button:hover {
     filter: invert(25%) sepia(100%) saturate(7194%) hue-rotate(357deg) brightness(92%) contrast(119%);
 }
 
-.favorite {
-    background: rgb(255, 255, 0) !important;
+.highlight {
+    background: rgba(255, 255, 0, 0.5) !important;
 }
