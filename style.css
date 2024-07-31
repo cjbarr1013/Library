@@ -12,6 +12,9 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
     box-shadow: 0 0rem 0.5rem black;
 }
 
@@ -31,6 +34,36 @@ h1:before {
 
 table {
     width: 100vw;
+    padding: 0.5rem;
+    border-spacing: 0;
+}
+
+tbody tr:nth-child(odd) {
+    background: rgb(238, 238, 238);
+}
+
+tbody tr td:last-child {
+    display: flex;
+    gap: 1rem;
+}
+
+tbody tr:hover {
+    background: rgb(200, 200, 200);
+}
+
+td, th {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+td button {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #add {
@@ -45,12 +78,11 @@ table {
     border: 2px solid black;
     border-radius: 0.5rem;
     fill: black;
-    transition: all 0.5s;
+    transition: all 0.3s;
     touch-action: manipulation;
 }
 
 #add:hover {
-    cursor: pointer;
     border-color: #06f;
     color: #06f;
     fill: #06f;
@@ -65,4 +97,24 @@ table {
 #add span {
     margin-bottom: 0.25rem;
     font-size: 2rem;
+}
+
+.fav-btn {
+    background: url(icons/star.svg) no-repeat center;
+}
+
+.fav-btn:hover {
+    filter: invert(85%) sepia(100%) saturate(759%) hue-rotate(359deg) brightness(103%) contrast(106%);
+}
+
+.del-btn {
+    background: url(icons/trash-can.svg) no-repeat center;
+}
+
+.del-btn:hover {
+    filter: invert(25%) sepia(100%) saturate(7194%) hue-rotate(357deg) brightness(92%) contrast(119%);
+}
+
+.favorite {
+    background: rgb(255, 255, 0) !important;
 }
