@@ -8,14 +8,38 @@ const dialog = document.querySelector("dialog");
 const tableBody = document.querySelector("tbody");
 const addBtn = document.querySelector("#add");
 const closeBtn = document.querySelector("#close");
+const submitBtn = document.querySelector("#submit");
+
+let formAuthor = document.querySelector("#author");
+let formTitle = document.querySelector("#title");
+let formPages = document.querySelector("#pages");
+let formComments = document.querySelector("textarea");
 
 addBtn.addEventListener("click", () => {
   dialog.showModal();
-  removeAllBooks();
-  displayBooks();
+});
+
+dialog.addEventListener("close", (e) => {
+  formAuthor.value = "";
+  formTitle.value = "";
+  formPages.value = "";
+  formComments.value = "";
 });
 
 closeBtn.addEventListener("click", () => {
+  dialog.close()
+})
+
+submitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const formRead = document.querySelector('input[name="read"]:checked');
+  const newBook = new Book(formAuthor.value, formTitle.value, formPages.value, formRead.value, formComments.value);
+  myLibrary.push(newBook);
+  getIndexes();
+  removeAllBooks();
+  displayBooks();
+
   dialog.close();
 });
 
@@ -27,20 +51,6 @@ function Book(author, title, pages, read, comments) {
   this.comments = comments,
   this.index;
 };
-
-/*
-function addBookToLibrary() {
-  const author = prompt("Author?");
-  const title = prompt("Title?");
-  const pages = prompt("Pages? (must be a positive integer)");
-  const read = prompt("Have you read it? (y/n)");
-  const comments = prompt("Any comments?");
-
-  const newBook = new Book(author, title, pages, read, comments)
-  myLibrary.push(newBook);
-  getIndexes();
-};
-*/
 
 function displayBooks() {
   for (const book of myLibrary) {
@@ -65,6 +75,17 @@ function displayBooks() {
     // Add buttons and event listeners
     const options = document.createElement("td");
 
+    const readBtn = document.createElement("button");
+    readBtn.classList.add("read-btn");
+    readBtn.addEventListener("click", () => {
+      if (book.read === "Yes") {
+        book.read = "No";
+      } else {
+        book.read = "Yes"
+      };
+      read.textContent = book.read;
+    });
+
     const favBtn = document.createElement("button");
     favBtn.classList.add("fav-btn");
     favBtn.addEventListener("click", () => {
@@ -85,6 +106,7 @@ function displayBooks() {
     });
 
     // Add buttons to table element
+    options.append(readBtn);
     options.appendChild(favBtn);
     options.appendChild(delBtn);
 

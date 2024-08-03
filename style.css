@@ -44,7 +44,7 @@ tbody tr:nth-child(odd) {
 
 tbody tr td:last-child {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 tbody tr:hover {
@@ -129,7 +129,7 @@ textarea:focus {
 }
 
 #close,
-button[type="submit"] {
+#submit {
     padding: 0.4rem 1rem;
     border: 0.1rem solid black;
     border-radius: 0.5rem;
@@ -150,11 +150,11 @@ button[type="submit"] {
     font-weight: 700;
 }
 
-button[type="submit"] {
+#submit {
     width: 50%;
 }
 
-button[type="submit"]:hover {
+#submit:hover {
     border-color: rgb(0, 160, 0);
     color: rgb(0, 160, 0);
     font-weight: 700;
@@ -191,6 +191,14 @@ button[type="submit"]:hover {
 #add span {
     margin-bottom: 0.25rem;
     font-size: 2rem;
+}
+
+.read-btn {
+    background: url(icons/book.svg) no-repeat center;
+}
+
+.read-btn:hover {
+    filter: invert(34%) sepia(100%) saturate(1030%) hue-rotate(89deg) brightness(98%) contrast(107%);
 }
 
 .fav-btn {
