@@ -4,24 +4,31 @@ let myLibrary = [
   new Book("Tom Doak", "Anatomy of a Golf Course", 288, "Yes", "Excellent look at how a golf course is made.")
 ];
 
-const myButton = document.querySelector("#add");
-myButton.addEventListener("click", () => {
-  addBookToLibrary();
+const dialog = document.querySelector("dialog");
+const tableBody = document.querySelector("tbody");
+const addBtn = document.querySelector("#add");
+const closeBtn = document.querySelector("#close");
+
+addBtn.addEventListener("click", () => {
+  dialog.showModal();
   removeAllBooks();
   displayBooks();
 });
 
-const tableBody = document.querySelector("tbody");
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
 
 function Book(author, title, pages, read, comments) {
   this.author = author,
   this.title = title,
   this.pages = pages,
-  this.read = read
-  this.comments = comments;
+  this.read = read,
+  this.comments = comments,
   this.index;
 };
 
+/*
 function addBookToLibrary() {
   const author = prompt("Author?");
   const title = prompt("Title?");
@@ -33,6 +40,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   getIndexes();
 };
+*/
 
 function displayBooks() {
   for (const book of myLibrary) {
