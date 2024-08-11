@@ -1,3 +1,18 @@
+class Book {
+  constructor(author, title, pages, read, comments) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+    this.comments = comments;
+    this.index;
+  }
+
+  changeReadStatus() {
+    this.read === "Yes" ? this.read = "No" : this.read = "Yes";
+  };
+};
+
 let myLibrary = [
   new Book("George R.R. Martin", "A Game of Thrones", 1088, "Yes", "Great book, would highly recommend!"),
   new Book("Adam Savage", "Every Tool's a Hammer", 320, "No", ""),
@@ -43,15 +58,6 @@ submitBtn.addEventListener("click", (event) => {
   dialog.close();
 });
 
-function Book(author, title, pages, read, comments) {
-  this.author = author,
-  this.title = title,
-  this.pages = pages,
-  this.read = read,
-  this.comments = comments,
-  this.index;
-};
-
 function displayBooks() {
   for (const book of myLibrary) {
     // Create elements and add text content
@@ -78,11 +84,7 @@ function displayBooks() {
     const readBtn = document.createElement("button");
     readBtn.classList.add("read-btn");
     readBtn.addEventListener("click", () => {
-      if (book.read === "Yes") {
-        book.read = "No";
-      } else {
-        book.read = "Yes"
-      };
+      book.changeReadStatus();
       read.textContent = book.read;
     });
 
