@@ -123,6 +123,29 @@ textarea:focus {
     margin-bottom: 0.3rem;
 }
 
+.error-container {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: #ff0000;
+}
+
+.error-container > .icon {
+    width: 1rem;
+    height: 1rem;
+    background: url(./icons/alert-circle.svg) center no-repeat;
+    filter: invert(17%) sepia(89%) saturate(7453%) hue-rotate(1deg) brightness(94%) contrast(116%);
+}
+
+.error-container > .msg {
+    padding-top: 0.08rem;
+}
+
+.hidden {
+    display: none;
+}
+
 .form-buttons {
     display: flex;
     justify-content: space-evenly;
